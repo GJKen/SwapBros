@@ -522,6 +522,13 @@ namespace Swap_Bros_Mod
             return Connect.IsOffline ? localPlayerIndex : -1;
         }
 
+        // Retain the 2.1.5 entry point used by CustomMapMultiplayer.
+        public static HeroType GetSelectedBroHeroType( int playerNum )
+        {
+            var player = HeroController.players[playerNum];
+            return player != null && !player.IsMine ? HeroType.None : API.GetSelectedBroHeroType( playerNum );
+        }
+
         public static void LoadKeyBinding()
         {
             swapLeftKey = AllModKeyBindings.LoadKeyBinding( "Swap Bros Mod", "Swap Left" );
@@ -859,5 +866,3 @@ namespace Swap_Bros_Mod
 
     }
 }
-
-
